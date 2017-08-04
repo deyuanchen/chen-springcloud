@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: api-gateway
+server:
+  port: 5555
+zuul:
+  routes:
+    api-a:
+      path: /api-a/**  #   http://localhost:5555/api-a/hi
+      serviceId: service-hello
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1111/eureka/
+
+#设置拦截是否开启
+#zuul.ThrowExceptionFilter.pre.disable=true
+ #zuul.ThrowExceptionPostFilter.post.disable=true
