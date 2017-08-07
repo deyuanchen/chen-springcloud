@@ -1,5 +1,6 @@
 package com.chen.service.hello.web;
 
+
 import com.netflix.zuul.context.RequestContext;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 
@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletRequest;
  * @data: 2017-08-04
  * @version: 1.0
  */
+
 @RestController
 public class HelloController {
     private final Logger logger = Logger.getLogger(getClass());
@@ -28,8 +29,10 @@ public class HelloController {
     @Autowired
     private DiscoveryClient discoveryClient;
 
+
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String hello() throws Exception {
+
         try {
             RequestContext ctx = RequestContext.getCurrentContext();
             HttpServletRequest request = ctx.getRequest();

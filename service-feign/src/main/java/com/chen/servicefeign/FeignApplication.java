@@ -1,24 +1,23 @@
-package com.chen.service.hello;
+package com.chen.servicefeign;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
 
-
 /**
- * <p>Tiltle: com.chen.service.hello </p>
- * <p>Description: 测试api网关 </p>
+ * <p>Tiltle: com.chen.servicefeign </p>
+ * <p>Description: 负载均衡 </p>
  *
  * @Author 陈德元
- * @data: 2017-08-04
+ * @data: 2017-08-07
  * @version: 1.0
  */
-@EnableFeignClients
-@EnableDiscoveryClient
 @SpringBootApplication
-public class HelloApplication {
+@EnableDiscoveryClient
+@EnableFeignClients
+public class FeignApplication {
     public static void main(String[] args) {
-        SpringApplication.run(HelloApplication.class, args);
+        SpringApplication.run(FeignApplication.class, args);
     }
 }
