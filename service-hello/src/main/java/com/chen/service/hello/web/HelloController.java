@@ -1,5 +1,6 @@
 package com.chen.service.hello.web;
 
+import com.netflix.zuul.context.RequestContext;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
@@ -8,6 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * <p>Tiltle: com.chen.service.hello.web </p>
@@ -26,6 +30,12 @@ public class HelloController {
 
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String hello() throws Exception {
+        RequestContext ctx = RequestContext.getCurrentContext();
+        HttpServletRequest request = ctx.getRequest();
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("service-admin");
+        requestDispatcher.forward(ctx.getRequest(),ctx.getResponse());
+        request.getCookies();
+        System.out.println(request.getCookies());
         ServiceInstance instance = discoveryClient.getLocalServiceInstance();
 
 

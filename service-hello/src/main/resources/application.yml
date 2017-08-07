@@ -1,6 +1,6 @@
 spring:
   application:
-    name: hello-service
+    name: service-hello
 
 eureka:
   client:
