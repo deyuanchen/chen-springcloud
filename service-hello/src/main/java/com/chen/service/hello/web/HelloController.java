@@ -30,13 +30,18 @@ public class HelloController {
 
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String hello() throws Exception {
-        RequestContext ctx = RequestContext.getCurrentContext();
-        HttpServletRequest request = ctx.getRequest();
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("service-admin");
-        requestDispatcher.forward(ctx.getRequest(),ctx.getResponse());
-        request.getCookies();
-        System.out.println(request.getCookies());
-        ServiceInstance instance = discoveryClient.getLocalServiceInstance();
+        try {
+            RequestContext ctx = RequestContext.getCurrentContext();
+            HttpServletRequest request = ctx.getRequest();
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("service-admin");
+            requestDispatcher.forward(ctx.getRequest(),ctx.getResponse());
+            request.getCookies();
+            System.out.println(request.getCookies());
+            ServiceInstance instance = discoveryClient.getLocalServiceInstance();
+        }catch (Exception e){
+            throw new Exception(e);
+        }
+
 
 
       //  logger.info("/hello, host:" + instance.getHost() + ", service_id:" + instance.getServiceId());

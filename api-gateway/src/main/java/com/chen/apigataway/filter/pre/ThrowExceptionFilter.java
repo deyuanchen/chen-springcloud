@@ -6,6 +6,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 /**
  * <p>Tiltle: com.chen.apigataway.filter.pre </p>
@@ -50,10 +52,15 @@ public class ThrowExceptionFilter extends ZuulFilter  {
 
     @Override
     public Object run() {
-        log.info("This is a pre filter, it will throw a RuntimeException");
         RequestContext ctx = RequestContext.getCurrentContext();
         try {
-            //   doSomething();
+        log.info("This is a pre filter, it will throw a RuntimeException");
+
+        HttpServletRequest request = ctx.getRequest();
+        Cookie[] cookies = request.getCookies();
+
+
+              // doSomething();
         } catch (Exception e) {
             ctx.set("error.status_code", HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             ctx.set("error.exception", e);

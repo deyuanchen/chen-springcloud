@@ -36,7 +36,7 @@ public class ThrowExceptionPostFilter extends ZuulFilter {
     @Override
     public Object run() {
         log.info("This is a post filter, it will throw a RuntimeException");
-        doSomething();
+       // doSomething();
         return null;
     }
 

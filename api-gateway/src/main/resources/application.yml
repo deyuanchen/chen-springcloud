@@ -8,6 +8,11 @@ zuul:
     api-a:
       path: /api-a/**  #   http://localhost:5555/api-a/hi
       serviceId: service-hello
+    api-b:
+      path: /api-b/**  #   http://localhost:5555/api-a/hi
+      serviceId: service-admin
+
+
 eureka:
   client:
     serviceUrl:
@@ -16,3 +21,9 @@ eureka:
 #设置拦截是否开启
 #zuul.ThrowExceptionFilter.pre.disable=true
  #zuul.ThrowExceptionPostFilter.post.disable=true
+
+ #全局设置：
+ # zuul.sensitive-headers=
+ # 指定路由设置：
+ # zuul.routes.<routeName>.sensitive-headers=
+ # zuul.routes.<routeName>.custom-sensitive-headers=true
