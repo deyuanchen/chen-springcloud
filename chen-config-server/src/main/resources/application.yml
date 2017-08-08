@@ -1,0 +1,21 @@
+
+server:
+  port: 4444
+
+spring:
+  application:
+      name: config-server
+  cloud:
+    config:
+      label: master
+      server:
+        git:
+          uri: https://github.com/deyuanchen/chen/
+          searchPaths: config
+
+#spring.cloud.config.server.git.username= your username
+#spring.cloud.config.server.git.password= your password
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1111/eureka/

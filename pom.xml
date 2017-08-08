@@ -16,18 +16,21 @@
     </properties>
 
     <modules>
-        <module>api-gateway</module>
-        <module>service-eureka</module>
-        <module>service-admin</module>
-        <module>common</module>
-        <module>service-hello</module>
-        <module>service-feign</module>
+        <module>chen-api-gateway</module>
+        <module>chen-eureka</module>
+        <module>chen-admin</module>
+        <module>chen-common</module>
+        <module>chen-hello</module>
+        <module>chen-feign</module>
+        <module>chen-config-server</module>
+        <module>chen-config-client</module>
+
     </modules>
 	
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.4.RELEASE</version>
+        <version>1.5.2.RELEASE</version>
         <relativePath/>
     </parent>
 	
@@ -67,10 +70,10 @@
         </dependency>
 
         <!--Spring Cloud Consul-->
-        <dependency>
+        <!--<dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-consul-discovery</artifactId>
-        </dependency>
+        </dependency>-->
 
         <!--Spring Cloud Feign-->
         <dependency>
@@ -83,6 +86,16 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-feign</artifactId>
         </dependency>
+
+        <!--config-server-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-config-server</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-config</artifactId>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -90,13 +103,12 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Dalston.SR1</version>
+                <version>Dalston.RC1</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
-
     <build>
         <plugins>
             <plugin>
@@ -105,4 +117,14 @@
             </plugin>
         </plugins>
     </build>
+    <repositories>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 </project>
