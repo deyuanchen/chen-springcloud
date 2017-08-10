@@ -1,1 +1,6 @@
 from: git-dev-1.0
+spring:
+  cloud:
+    config:
+      server:
+        git: dhehheh
