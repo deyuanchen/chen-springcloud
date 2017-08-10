@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>chen</groupId>
-    <artifactId>chen-feign</artifactId>
+    <artifactId>chen-feign-hystrix-dashboard</artifactId>
     <version>1.0-SNAPSHOT</version>
 
 

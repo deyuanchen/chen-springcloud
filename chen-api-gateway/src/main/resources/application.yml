@@ -7,10 +7,10 @@ zuul:
   routes:
     api-a:
       path: /api-a/**  #   http://localhost:5555/api-a/hi
-      serviceId: hello
+      serviceId: chen-hello
     api-b:
       path: /api-b/**  #   http://localhost:5555/api-a/hi
-      serviceId: admin
+      serviceId: chen-admin
 
 
 eureka:

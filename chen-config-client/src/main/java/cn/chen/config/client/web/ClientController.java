@@ -16,11 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RefreshScope
 @RestController
 public class ClientController {
-    /*@Value("${from}")
-    String from;
+    @Value("${foo}")
+    String foo;
 
     @RequestMapping(value = "/hi")
     public String hi(){
-        return from;
-    }*/
+        return foo;
+    }
 }

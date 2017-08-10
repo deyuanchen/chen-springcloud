@@ -1,6 +1,8 @@
 package cn.chen.hello.web;
 
 
+import cn.chen.hello.HelloService;
+import cn.chen.hello.service.HelloServiceImpl;
 import com.netflix.zuul.context.RequestContext;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,36 +27,38 @@ import javax.servlet.http.HttpServletRequest;
 @RestController
 public class HelloController {
     private final Logger logger = Logger.getLogger(getClass());
-
+    @Autowired
+    HelloService helloService;
     @Autowired
     private DiscoveryClient discoveryClient;
 
 
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String hello() throws Exception {
-
+        RequestContext ctx = RequestContext.getCurrentContext();
+        HttpServletRequest request = ctx.getRequest();
         try {
-            RequestContext ctx = RequestContext.getCurrentContext();
-            HttpServletRequest request = ctx.getRequest();
+
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("service-admin");
             requestDispatcher.forward(ctx.getRequest(),ctx.getResponse());
             request.getCookies();
             System.out.println(request.getCookies());
             ServiceInstance instance = discoveryClient.getLocalServiceInstance();
         }catch (Exception e){
-            throw new Exception(e);
+            throw new Exception("参数异常");
         }
 
 
 
       //  logger.info("/hello, host:" + instance.getHost() + ", service_id:" + instance.getServiceId());
-        return "Hello World";
+        return "HelloService World";
     }
 
     @RequestMapping(value = "/hello1", method = RequestMethod.GET)
     public String hello(@RequestParam String name) {
         ServiceInstance instance = discoveryClient.getLocalServiceInstance();
         logger.info("/hello1, host:" + instance.getHost() + ", service_id:" + instance.getServiceId());
-        return "Hello " + name;
+        helloService.sayHiFromClientOne(name);
+        return "HelloService " + name;
     }
 }

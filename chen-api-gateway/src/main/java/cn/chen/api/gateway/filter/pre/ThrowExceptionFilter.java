@@ -1,9 +1,14 @@
 package cn.chen.api.gateway.filter.pre;
 
+import cn.chen.common.util.StatusCodeUtil;
+import com.netflix.eureka.util.StatusUtil;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
+import org.codehaus.jackson.JsonEncoding;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.Cookie;
@@ -19,6 +24,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Component
 public class ThrowExceptionFilter extends ZuulFilter  {
+
 
     private static Logger log = LoggerFactory.getLogger(ThrowExceptionFilter.class);
 
@@ -57,10 +63,11 @@ public class ThrowExceptionFilter extends ZuulFilter  {
         log.info("This is a pre filter, it will throw a RuntimeException");
 
         HttpServletRequest request = ctx.getRequest();
+
         Cookie[] cookies = request.getCookies();
+        
 
-
-              // doSomething();
+            // doSomething();
         } catch (Exception e) {
             ctx.set("error.status_code", HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             ctx.set("error.exception", e);

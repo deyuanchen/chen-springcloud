@@ -25,10 +25,10 @@ public class ConfigClientApplication {
     /**
      * 检测环境变量
      * @param env
-     */
+     *//*
     @Autowired
     void setEnviroment(Environment env) {
         System.out.println("from to env: "
-                + env.getProperty("from"));
-    }
+                + env.getProperty("foo"));
+    }*/
 }

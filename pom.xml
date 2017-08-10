@@ -21,9 +21,13 @@
         <module>chen-admin</module>
         <module>chen-common</module>
         <module>chen-hello</module>
-        <module>chen-feign</module>
         <module>chen-config-server</module>
         <module>chen-config-client</module>
+        <module>chen-feign-hystrix-dashboard</module>
+        <module>chen-ribbon</module>
+        <module>chen-ribbon-hystrix</module>
+        <module>chen-zipkin</module>
+        <module>chen-hello-api</module>
 
     </modules>
 	
@@ -60,7 +64,15 @@
         <!--服务容错-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-hystrix-dashboard</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-hystrix</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-turbine</artifactId>
         </dependency>
 
         <!--健康监测包-->
@@ -87,14 +99,29 @@
             <artifactId>spring-cloud-starter-feign</artifactId>
         </dependency>
 
-        <!--config-server-->
+
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-config-server</artifactId>
+            <artifactId>spring-cloud-starter-ribbon</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-turbine</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-config</artifactId>
+            <artifactId>spring-cloud-netflix-turbine</artifactId>
+        </dependency>
+
+
+
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 

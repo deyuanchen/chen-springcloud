@@ -12,6 +12,12 @@
     <groupId>chen</groupId>
     <artifactId>chen-hello</artifactId>
     <version>1.0-SNAPSHOT</version>
-
+    <dependencies>
+        <dependency>
+            <groupId>chen</groupId>
+            <artifactId>chen-hello-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>

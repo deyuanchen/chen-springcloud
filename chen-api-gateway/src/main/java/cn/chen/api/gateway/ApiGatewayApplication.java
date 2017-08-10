@@ -1,6 +1,8 @@
 package cn.chen.api.gateway;
 
+import cn.chen.common.util.StatusCodeUtil;
 import com.netflix.zuul.FilterProcessor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.DefaultErrorAttributes;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.client.SpringCloudApplication;
@@ -18,11 +20,11 @@ import org.springframework.context.annotation.Bean;
 //@EnableZuulProxy注解开启Zuul
 @EnableZuulProxy
 @SpringCloudApplication
-public class Application {
+public class ApiGatewayApplication {
 
     public static void main(String[] args) {
         FilterProcessor.setProcessor(new DidiFilterProcessor());
-        new SpringApplicationBuilder(Application.class).web(true).run(args);
+        new SpringApplicationBuilder(ApiGatewayApplication.class).web(true).run(args);
     }
 
     @Bean

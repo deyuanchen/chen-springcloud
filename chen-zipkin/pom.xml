@@ -10,16 +10,18 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>chen</groupId>
-    <artifactId>chen-config-server</artifactId>
+    <artifactId>chen-zipkin</artifactId>
     <version>1.0-SNAPSHOT</version>
-
     <dependencies>
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-config-server</artifactId>
+            <groupId>io.zipkin.java</groupId>
+            <artifactId>zipkin-server</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>io.zipkin.java</groupId>
+            <artifactId>zipkin-autoconfigure-ui</artifactId>
+        </dependency>
     </dependencies>
-
 
 </project>
